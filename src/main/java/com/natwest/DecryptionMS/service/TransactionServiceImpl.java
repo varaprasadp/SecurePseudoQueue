@@ -13,7 +13,7 @@ import com.natwest.DecryptionMS.repository.TransactionRepository;
 public class TransactionServiceImpl implements TransactionService {
 
 	@Autowired
-	TransactionRepository transactionRepository;
+	private TransactionRepository transactionRepository;
 	
 	@Override
 	public String addTransaction(TransactionEntity transaction) {

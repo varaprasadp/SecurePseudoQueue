@@ -37,7 +37,7 @@ public class TransactionEntity {
 
 	@Override
 	public String toString() {
-		return "TransactionEntity [transactionNo=" + transactionNo + ", accountNumber=" + accountNumber + ", type="
+		return "TransactionEntity [accountNumber=" + accountNumber + ", type="
 				+ type + ", amount=" + amount + ", currency=" + currency + ", accountFrom=" + accountFrom + "]";
 	}
 

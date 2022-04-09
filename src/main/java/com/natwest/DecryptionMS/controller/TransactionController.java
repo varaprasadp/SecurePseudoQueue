@@ -14,11 +14,11 @@ import com.natwest.DecryptionMS.service.TransactionService;
 public class TransactionController {
 	
 	@Autowired
-	TransactionService transactionService;
+	private TransactionService transactionService;
 	
 	@PostMapping
 	public ResponseEntity<String> postTransaction(@RequestBody TransactionEntity transactionEntity){
 		String result = transactionService.addTransaction(transactionEntity);
-		return new ResponseEntity<String>(result,HttpStatus.OK);
+		return new ResponseEntity<String>(result,HttpStatus.CREATED);
 	}
 }
