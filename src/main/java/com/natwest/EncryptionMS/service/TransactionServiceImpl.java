@@ -19,9 +19,9 @@ public class TransactionServiceImpl implements TransactionService {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
 	    headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	    transaction = restTemplate.postForEntity("https://decryption-ms.herokuapp.com/", 
-	    		encryptTransaction(transaction), TransactionEntity.class, headers).getBody();
-		return transaction.toString();
+	    String transactionResult = restTemplate.postForEntity("https://decryption-ms.herokuapp.com/", 
+	    		encryptTransaction(transaction), String.class, headers).getBody();
+		return transactionResult;
 	}
 	
 	public TransactionEntity encryptTransaction(TransactionEntity transaction) {
