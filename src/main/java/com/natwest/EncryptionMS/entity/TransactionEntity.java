@@ -1,23 +1,40 @@
 package com.natwest.EncryptionMS.entity;
 
-public class Transaction {
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+public class TransactionEntity {
 	
+	@NotNull(message = "Account number should not be null")
+	@NotEmpty(message = "Account number can not be empty")
+	@Pattern(regexp="^[0-9]*$", message = "Account number can not have characters other than digits")
 	private String accountNumber;
 	
+	@NotNull(message = "Account type should not be null")
+	@NotEmpty(message = "Account type can not be empty")
 	private String type;
 	
+	@NotNull(message = "Amount should not be null")
+	@NotEmpty(message = "Amount can not be empty")
+	@Pattern(regexp="^[1-9]\\d*$", message = "Amount invalid")
 	private String amount;
 	
+	@NotNull(message = "Currency should not be null")
+	@NotEmpty(message = "Currency can not be empty")
 	private String currency;
 	
+	@NotNull(message = "From Account should not be null")
+	@NotEmpty(message = "From Account can not be empty")
+	@Pattern(regexp="^[0-9]*$", message = "From Account number can not have characters other than digits")
 	private String accountFrom;
 
-	public Transaction() {
+	public TransactionEntity() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Transaction(String accountNumber, String type, String amount, String currency, String accountFrom) {
+	public TransactionEntity(String accountNumber, String type, String amount, String currency, String accountFrom) {
 		this.accountNumber = accountNumber;
 		this.type = type;
 		this.amount = amount;

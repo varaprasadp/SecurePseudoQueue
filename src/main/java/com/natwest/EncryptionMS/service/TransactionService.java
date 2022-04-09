@@ -1,7 +1,7 @@
 package com.natwest.EncryptionMS.service;
 
-import com.natwest.EncryptionMS.entity.Transaction;
+import com.natwest.EncryptionMS.entity.TransactionEntity;
 
 public interface TransactionService {
-	String addTransaction(Transaction transaction);
+	String addTransaction(TransactionEntity transaction);
 }
