@@ -12,6 +12,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.HttpServerErrorException;
 
 import com.natwest.EncryptionMS.entity.TransactionEntity;
 import com.natwest.EncryptionMS.service.TransactionService;
@@ -27,8 +28,15 @@ public class TransactionController {
 		if(bindingResult.hasErrors()) {
 			return validation(bindingResult);
 		}
-		String result = transactionService.addTransaction(transaction);
-		return new ResponseEntity<String>(result, HttpStatus.OK); 
+		try {
+			String result = transactionService.addTransaction(transaction);
+			return new ResponseEntity<String>("Transaction inserted successfully!!!" 
+					+ "\n" + result, HttpStatus.CREATED);
+		}
+		catch(Exception e) {
+			HttpStatus hs = HttpStatus.valueOf(((HttpServerErrorException) e).getRawStatusCode());
+	    	return new ResponseEntity<String>("Couldn't record the transaction due to "+ ((HttpServerErrorException) e).getStatusText() + "error", hs);
+		}
 	}
 	
 	public ResponseEntity<String> validation(BindingResult bindingResult){
