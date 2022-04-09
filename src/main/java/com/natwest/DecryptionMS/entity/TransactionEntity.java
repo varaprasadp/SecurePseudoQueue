@@ -41,14 +41,6 @@ public class TransactionEntity {
 				+ type + ", amount=" + amount + ", currency=" + currency + ", accountFrom=" + accountFrom + "]";
 	}
 
-	public int getTransactionNo() {
-		return transactionNo;
-	}
-
-	public void setTransactionNo(int transactionNo) {
-		this.transactionNo = transactionNo;
-	}
-
 	public String getAccountNumber() {
 		return accountNumber;
 	}
